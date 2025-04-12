@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Heart, Minus, Plus, Share2, ShoppingCart, Star } from "lucide-react"
+import { Heart, Minus, Plus, Share2, ShoppingCart, Star } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { useCart } from "@/context/cart-context"
 
+// Remove any PageProps type constraint and use a simple type annotation
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [quantity, setQuantity] = useState(1)
   const [selectedOption, setSelectedOption] = useState("standard")
