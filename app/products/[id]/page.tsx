@@ -13,14 +13,14 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { useCart } from "@/context/cart-context"
 
 // Remove any PageProps type constraint and use a simple type annotation
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage() {
   const [quantity, setQuantity] = useState(1)
   const [selectedOption, setSelectedOption] = useState("standard")
   const { addToCart } = useCart()
 
   // This would typically come from an API or database based on the ID
   const product = {
-    id: params.id,
+    // id: params.id,
     name: "Deluxe Celebration Hamper",
     price: 89.99,
     discountPrice: 79.99,
@@ -81,7 +81,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     const selectedProductOption = product.options.find((option) => option.id === selectedOption)
 
     addToCart({
-      id: product.id,
+      id: product.name,
       name: product.name,
       price: selectedProductOption?.price || product.price,
       quantity: quantity,
@@ -104,7 +104,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         items={[
           { label: "Home", href: "/" },
           { label: "Gift Hampers", href: "/categories/gift-hampers" },
-          { label: product.name, href: `/products/${product.id}`, active: true },
+          { label: product.name, href: `/products/${product.name}`, active: true },
         ]}
       />
 
